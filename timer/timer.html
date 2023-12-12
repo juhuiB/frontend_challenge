@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>timer</title>
+    
+</head>
+<style>
+    .wrap {padding-top:100px;}
+    .timer {display:flex;align-items:center;justify-content:center;}
+    input {width:150px;height:150px;background-color:#4c6ef5;border-radius:8px;border:none;text-align:center;font-weight:bold;font-size:2.5rem;}
+    input:disabled {color:initial;}
+    .symbol {margin:0 10px;font-weight:bold;font-size:2.5rem;}
+    .btn-area {display:flex;align-items:center;justify-content:center;margin-top:30px;}
+    .btn-area .btn {width:150px;height:50px;background-color:#a5d8ff;border-radius:8px;border:none;}
+    .btn-area .btn + .btn {margin-left:15px;}
+    .btn-area .btn span {color:#fff;font-size:1.5rem;font-weight:bold;}
+</style>
+
+<body>
+    <div class="wrap">
+        <div class="timer">
+            <input type="num" class="hour" placeholder="00" value="20"/>
+            <span class="symbol">:</span>
+            <input type="num" class="min" placeholder="00" value="50"/>
+            <span class="symbol">:</span>
+            <input type="num" class="sec" placeholder="00" value="30"/>
+        </div>
+        <div class="btn-area">
+            <button class="btn" onclick="startCountdown()"><span>START</span></button>
+            <button class="btn" onclick="stopCountdown()"><span>STOP</span></button>
+            <button class="btn" onclick="resetCountdown()"><span>RESET</span></button>
+        </div>
+    </div>
+</body>
+
+<script>
+    let timer;
+    let hoursInput = document.querySelector('.hour');
+    let minutesInput = document.querySelector('.min');
+    let secondsInput = document.querySelector('.sec');
+
+    function startCountdown () {
+        let hours = parseInt(hoursInput.value) || 0;
+        let minutes = parseInt(minutesInput.value) || 0;
+        let seconds = parseInt(secondsInput.value) || 0;
+        
+        let totalSeconds = (hours * 3600) + (minutes * 60) + seconds;
+        
+        hoursInput.disabled = true;
+        minutesInput.disabled = true;
+        secondsInput.disabled = true;
+    
+        timer = setInterval(function(){
+            if(totalSeconds <= 0){
+                clearInterval(timer);
+                alert("시간이 다 되었습니다 :)");
+                
+                hoursInput.disabled = false;
+                minutesInput.disabled = false;
+                secondsInput.disabled = false;
+                
+            } else {
+                hours = Math.floor(totalSeconds / 3600);
+                minutes = Math.floor((totalSeconds % 3600) / 60);
+                seconds = totalSeconds % 60;
+                
+                hoursInput.value = String(hours).padStart(2, '0');
+                minutesInput.value = String(minutes).padStart(2, '0');
+                secondsInput.value = String(seconds).padStart(2, '0');
+                
+                totalSeconds--;
+            }
+        }, 1000);
+    }
+    
+    function stopCountdown () {
+        clearInterval(timer);
+        
+        hoursInput.disabled = false;
+        minutesInput.disabled = false;
+        secondsInput.disabled = false;
+    }
+    
+    function resetCountdown(){
+        clearInterval(timer);
+        
+        hoursInput.value = "00";
+        minutesInput.value = "00";
+        secondsInput.value = "00";
+        
+        hoursInput.disabled = false;
+        minutesInput.disabled = false;
+        secondsInput.disabled = false;
+        
+    }
+</script>
+</html>
