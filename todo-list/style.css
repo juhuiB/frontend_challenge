@@ -1,0 +1,82 @@
+@charset "utf-8";
+
+/* reset */
+* {margin:0;padding:0;}
+* {-webkit-box-sizing:border-box;-moz-box-sizing:border-box;-ms-box-sizing:border-box;box-sizing:border-box;-o-box-sizing:border-box;}
+html, body {width:100%;height:100%;margin:0;padding:0;-webkit-text-size-adjust:100%;}
+body {width:100%;height:100%;font-size:16px;color:#111;-webkit-text-size-adjust:100%;word-break:break-all;}
+html *, body * {font-weight:500;}
+dl, ul, ol, li {list-style:none;}
+table {empty-cells:show;border-collapse:collapse;width:100%;table-layout:fixed;}
+fieldset {display:block;border:0;}
+legend, caption {overflow:hidden;width:1px;height:1px;margin:0;padding:0;border:0;clip:rect(0, 0, 0, 0);}
+img {border:0 none;}
+img, label {vertical-align:top;}
+button {border:0 none;border-radius:0;background:none;box-shadow:none;-webkit-appearance:none;appearance:none;cursor:pointer;}
+button:focus {outline:none;}
+input, textarea, select {border-radius:0;color:#dbdbdb;}
+select {appearance:none;-webkit-appearance:none;-moz-appearance:none;}
+textarea {border:none;resize:none;overflow-y:auto;font-size:15px;color:#555;font-weight:400;}
+em {font-style:normal;}
+h1, h2, h3, h4, h5, h6 {font-weight:500;}
+a {color:#555;text-decoration:none;word-break:keep-all;}
+a:link, a:visited, a:hover, a:active, a:focus {text-decoration:none;}
+input:-webkit-autofill {-webkit-box-shadow:0 0 0px 1000px white inset;}
+textarea:focus {outline:none;}
+select:focus {outline:none;}
+
+/* layout */
+.wrap {position:relative;width:480px;height:auto;margin:50px auto 0;padding:20px;background-color:#fff;border:1px solid;}
+.container {padding:10px 0;}
+
+.header {}
+.header .title {margin-bottom:30px;font-weight:bold;font-size:32px;}
+
+.todo-box {border:1px solid #424242;border-radius:8px;padding:20px;margin-top:30px;}
+.line-area {position:relative;display:flex;align-items:center;width:100%;height:100px;padding:0 15px;background-color:#424242;border-radius:8px}
+.line-area + .line-area {margin-top:10px;}
+.line-area .todo {display:flex;align-items:center;width:70%;}
+.line-area .todo input[type='text'] {height:50px;color:#000;width:100%;padding:0 5px;}
+.line-area .badge {position:absolute;top:35px;right:70px;}
+.line-area .btn-edit, .btn-confirm {position:absolute;top:35px;right:20px;}
+.line-area p {color:#fff;}
+
+.filter {}
+.filter span {display:inline-block;font-size:18px;font-weight:bold;margin-bottom:15px;}
+
+.tab-header {margin:10px 0;}
+.tab-header ul {display:flex;align-items:center;border-bottom:1px solid #c8c8c8;}
+.tab-header ul li {display:inline-block;width:fit-content;height:30px;margin-bottom:-1px;padding:2px 15px;background-color:#e8e8e8;border:1px solid #c8c8c8;background:#f1f2f5;}
+.tab-header ul li.on {background-color:#fff;border-bottom-color:#fff;}
+.tab-header ul li.on a {font-weight:700;color:#000;}
+.tab-header ul li a {display:block;font-size:12px;line-height:26px;}
+.tab-header ul li + li {margin-left:4px;}
+
+.check-box .check {width:24px;height:24px;vertical-align:middle;}
+.check-box + p {margin-left:10px;}
+
+.input-box {display:flex;align-items:center;gap:10px;}
+.input-box .input {display:inline-block;width:100%;height:50px;padding:0 10px;border:none;background-color:#424242;border-radius:8px;color:#fff;font-size:20px;}
+.input-box  + .badge-box {margin-top:15px;}
+
+.btn-add {display:inline-block;width:50px;height:50px;border:none;background-color:#FF6B6B;color:#fff;border-radius:8px;font-size:24px;}
+.btn-edit,.btn-confirm {display:inline-block;width:fit-content;height:24px;padding:0 10px;border:none;background-color:#FF6B6B;color:#fff;border-radius:8px;font-size:12px;line-height:1.3}
+
+.badge-box {}
+.badge-box .badge-list {display:flex;align-items:center;}
+.badge {display:inline-block;width:fit-content;height:24px;padding:0px 10px;border-radius:15px;color:#fff;font-size:12px;line-height:2;}
+.badge.active {line-height:1.8;}
+.badge a {display:inline-block;width:100%;height:100%;color:#fff;font-size:12px;}
+.badge + .badge {margin-left:10px;}
+
+.purple {background-color:#7950f2;}
+.pink {background-color:#eebefa;}
+.blue {background-color:#228be6;}
+.red {background-color:#e64980;}
+
+.badge.active.purple {border:2px solid #1d1142;}
+.badge.active.pink {border:2px solid #a46fb1;}
+.badge.active.blue {border:2px solid #1663a7;}
+.badge.active.red {border:2px solid #882246;}
+
+
