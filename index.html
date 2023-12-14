@@ -1,0 +1,164 @@
+<!DOCTYPE HTML>
+<html lang="ko">
+	<head>
+		<meta charset="UTF-8">
+		<title> juhui index </title>
+		<script src="jquery-3.6.0.min.js"></script>
+		<style>
+			*{margin:0;padding:0;}
+			html,body {width:100%;height:100%;}
+			body {font-family:'돋움',dotum;font-size:12px;color:#666;}
+			a, a:link, a:visited, a:hover, a:active {color:#1384c9;text-decoration:underline;}
+
+			.wrap {display:flex;display:-webkit-flex;-ms-display:flex;flex-direction:column;width:100%;min-width:1920px;height:100%;}
+			.tbl-header {background-color:#f5f7f9;border-top:2px solid #ddd;}
+			.tbl-content {flex:1;-webkit-flex:1;-ms-flex:1;overflow-x:auto;border-bottom:2px solid #ddd;}
+			.tbl-content tr:nth-child(odd) {background:#fff;}
+			.tbl-content tr:nth-child(even) {background:#f9f9f9;}
+			.tbl-content tr:hover {background:#ffe6eb;}
+			
+			table {width:100%;table-layout:fixed;}
+			table, th, td {border:0;}
+			table caption {display:none;}
+			th, td {border-right:1px solid #ddd;border-bottom:1px solid #ddd;padding:7px 6px 4px;}
+			th {text-align:center;}
+			td {text-align:left;}
+			.date, .status {text-align:center;}
+		</style>
+		<script>
+			$(function() {
+				//table content 스크롤 
+				$(window).on("resize", function() {
+					var scrollWidth = $(".tbl-content").outerWidth() - $(".tbl-content table").width();
+					$(".tbl-header").css({"padding-right": scrollWidth});
+				}).resize();
+				
+				//파일 url 연결
+				$(".file-link").each(function() {
+					var link = $(this).text(), str = "";
+
+					if(link != null && link != "") {
+						str += "<a href=\"" + link + "\" target = \"_blank\">" + link + "</a>";
+						$(this).empty().html(str);
+					}
+				});
+
+				//1Depth 구분선
+				$(".depth-1").each(function() {
+					var depth1 = $(this).text();
+
+					if(depth1 != "") {
+						$(this).closest("tr").find("td").css("border-top", "1px solid #999");
+					}
+					$(".depth-1").first().closest("tr").find("td").css("border-top-color", "#ccc");
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div class="wrap">
+			<!-- thead_section -->
+			<div class="tbl-header">
+				<table cellpadding="0" cellspacing="0">
+					<caption>head</caption>
+					<colgroup>
+						<col style="width:7%">
+						<col style="width:6%">
+						<col style="width:11%">
+						<col style="width:10%" span="2">
+						<col style="width:7%">
+						<col>
+						<col style="width:5%">
+						<col style="width:5%">
+						<col style="width:6%">
+						<col>
+					</colgroup>
+					<thead>
+						<tr>
+							<th scope="col" colspan="5">Menu</th>
+							<th scope="col" rowspan="2">File_Name</th>
+							<th scope="col" rowspan="2">Url</th>
+							<th scope="col" rowspan="2">Date</th>
+							<th scope="col" rowspan="2">Status</th>
+							<th scope="col" rowspan="2">Screen ID</th>
+							<th scope="col" rowspan="2">Note</th>
+						</tr>
+						<tr>
+							<th scope="col">1Depth</th>
+							<th scope="col">Folder_Name</th>
+							<th scope="col">2Depth</th>
+							<th scope="col">3Depth</th>
+							<th scope="col">4Depth</th>
+						</tr>
+					</thead>
+				</table>
+			</div>
+			<!-- //thead_section -->
+			<!-- tbody_section -->
+			<div class="tbl-content">
+				<table cellpadding="0" cellspacing="0">
+					<caption>body</caption>
+					<colgroup>
+						<col style="width:7%">
+						<col style="width:6%">
+						<col style="width:11%">
+						<col style="width:10%" span="2">
+						<col style="width:7%">
+						<col>
+						<col style="width:5%">
+						<col style="width:5%">
+						<col style="width:6%">
+						<col>
+					</colgroup>
+					<tbody>
+						<!-- 각 column 설명
+						<tr>
+							<td class="depth-1">1depth</td>
+							<td class="folder-name">folder name</td>
+							<td class="depth-2">2depth</td>
+							<td class="depth-3">3depth</td>
+							<td class="depth-4">4depth</td>
+							<td class="file-name">file name</td>
+							<td class="file-link">file path</td>
+							<td class="date">date</td>
+							<td class="status">status</td>
+							<td class="screen-id">screen id</td>
+							<td class="note">note</td>
+						</tr>
+						//각 column 설명 -->
+						<tr>
+							<td class="depth-1"></td>
+							<td class="folder-name"></td>
+							<td class="depth-2">카운트다운 타이머</td>
+							<td class="depth-3"></td>
+							<td class="depth-4"></td>
+							<td class="file-name">timer.html</td>
+							<td class="file-link">timer/timer.html</td>
+							<td class="date">2023-12-12</td>
+							<td class="status">O</td>
+							<td class="screen-id"></td>
+							<td class="note"></td>
+						</tr>
+						<tr>
+							<td class="depth-1"></td>
+							<td class="folder-name">pc</td>
+							<td class="depth-2">투두 리스트</td>
+							<td class="depth-3"></td>
+							<td class="depth-4"></td>
+							<td class="file-name">todo-list.html</td>
+							<td class="file-link">todo-list/todo-list.html</td>
+							<td class="date">2023-12-13</td>
+							<td class="status">O</td>
+							<td class="screen-id"></td>
+							<td class="note"></td>
+						</tr>
+						
+					</tbody>
+				</table>	
+			</div>
+			<!-- //tbody_section -->
+		</div>
+
+		
+	</body>
+</html>
