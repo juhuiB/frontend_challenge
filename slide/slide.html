@@ -23,23 +23,38 @@
 
     <script>
         let currentIndex = 0;
-        const slider = document.getElementById("slider");
-        const slides = document.querySelectorAll(".slide");
-        const totalSlides = slides.length;
+const slider = document.getElementById("slider");
+const slides = document.querySelectorAll(".slide");
+const totalSlides = slides.length;
+const slideInterval = 2000; // 2초 간격으로 슬라이딩 설정
 
-        function updateSlider() {
-            slider.style.transform = `translateX(${-currentIndex * 100}%)`;
-        }
+function updateSlider() {
+  slider.style.transform = `translateX(${-currentIndex * 100}%)`;
+}
 
-        function nextSlide() {
-            currentIndex = (currentIndex + 1) % totalSlides;
-            updateSlider();
-        }
+function nextSlide() {
+  currentIndex = (currentIndex + 1) % totalSlides;
+  updateSlider();
+}
 
-        function prevSlide() {
-            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-            updateSlider();
-        }
+function prevSlide() {
+  currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+  updateSlider();
+}
+
+// 자동 슬라이딩 설정
+const autoSlide = setInterval(nextSlide, slideInterval);
+
+// 페이지 로드 시 자동 슬라이딩 시작
+window.addEventListener("load", () => {
+  autoSlide;
+});
+
+// 페이지 벗어날 때 clearInterval을 통해 자동 슬라이딩 중지
+window.addEventListener("beforeunload", () => {
+  clearInterval(autoSlide);
+});
+
     </script>
   </body>
 </html>
