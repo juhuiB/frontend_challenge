@@ -185,8 +185,43 @@
 
             <div class="banner">
                 <div class="content">
-                    <div class="banner-img">
+                    <!-- <div class="banner-img">
                         <img src="./assets/images/img_service.png" alt="banner">
+                    </div> -->
+                    
+                    <div class="slider-container">
+                        <!-- slide 영역 -->
+                        <div class="slider">
+                            <div class="slide bg-blue">
+                                <p>
+                                    고객 데이터 분석으로 <br>
+                                    고객 중심 서비스 제공하기
+                                </p>
+                            </div>
+                            <div class="slide bg-green">
+                                <p>
+                                    기업 유튜브 채널로 <br>
+                                    10만 구독자 모으기 (2탄)
+                                </p>
+                            </div>
+                            <div class="slide bg-green">
+                                <p>
+                                    기업 유튜브 채널로 <br>
+                                    10만 구독자 모으기 (1탄)
+                                </p>
+                            </div>
+                            <div class="slide bg-black">
+                                <p>
+                                    신규 입사자의 적응을 <br>
+                                    돕는 효과적인 온보딩 <br>
+                                    프로그램 알아보기
+                                </p>
+                            </div>
+                        </div>
+                        <!-- //slide 영역 -->
+                        
+                        <div class="arrow prev" onclick="prevSlide()">&#9665;</div>
+                        <div class="arrow next" onclick="nextSlide()">&#9655;</div>
                     </div>
     
                     <div class="banner-info">
@@ -249,7 +284,7 @@
                         <li class="card"> 
                             <a href="#none">
                                 <div class="card-img">
-                                    <img src="./assets/images/img_cor_03.jpeg" alt="cor_03" class="img">
+                                    <img src="./assets/images/img_cor_03.png" alt="cor_03" class="img">
                                 </div>
                                 <div class="card-info">
                                    <span class="mini-txt">마케팅</span>
@@ -464,10 +499,41 @@
             </div>
         </div>
 
-        <footer class="footer">
-
-        </footer>
-
     </div>
 </body>
+<script>
+        let currentIndex = 0;
+        const slider = document.querySelector(".slider");
+        const slides = document.querySelectorAll(".slide");
+        const totalSlides = slides.length;
+        const slideInterval = 4000; // 4초 간격으로 슬라이딩 설정
+
+        function updateSlider() {
+            // slider.style.transform = `translateX(${-currentIndex * 100}%)`;
+            slider.style.transform = `translateX(${-currentIndex * 100}%)`;
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % totalSlides;
+            updateSlider();
+        }
+
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+            updateSlider();
+        }
+
+        // 자동 슬라이딩 설정
+        const autoSlide = setInterval(nextSlide, slideInterval);
+
+        // 페이지 로드 시 자동 슬라이딩 시작
+        window.addEventListener("load", () => {
+            autoSlide;
+        });
+
+        // 페이지 벗어날 때 clearInterval을 통해 자동 슬라이딩 중지
+        window.addEventListener("beforeunload", () => {
+            clearInterval(autoSlide);
+        }); 
+</script>
 </html>
