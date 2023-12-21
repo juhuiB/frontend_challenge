@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Response menu</title>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="wrap">
+        <div class="container">
+            <header class="header">
+                <!-- pc -->
+                <nav class="nav">
+                    <ul>
+                        <li><a href="#none">Home</a></li>
+                        <li><a href="#none">About</a></li>
+                        <li><a href="#none">Contact</a></li>
+                        <li><a href="#none">FAQ</a></li>
+                    </ul>
+                </nav>
+                <!-- //pc -->
+                <button type="button" class="btn-menu" onclick="toggleMenu();"><i class="ic-menu"></i><span>전체메뉴</span></button>
+                <!-- mo -->
+                <div class="gnb-menu">
+                    <button type="button" class="btn-close" onclick="toggleMenu();"><i class="ic-close"></i><span>닫기</span></button>
+                    <ul>
+                        <li><a href="#none">Home</a></li>
+                        <li><a href="#none">About</a></li>
+                        <li><a href="#none">Contact</a></li>
+                        <li><a href="#none">FAQ</a></li>
+                    </ul>
+                </div>
+                <!-- //mo -->
+            </header>
+        </div>
+    </div>
+</body>
+<script>
+    function toggleMenu() {
+  const gnbMenu = document.querySelector('.gnb-menu');
+  gnbMenu.style.display = gnbMenu.style.display === 'flex' ? 'none' : 'flex';
+}
+
+</script>
+</html>
